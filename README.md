@@ -15,7 +15,7 @@ Currently it shows overall Win% and "Improvement when drawn"-Points. Might add s
 ![DownloadWhere](https://user-images.githubusercontent.com/5879928/136125776-d0295907-f9bd-4277-b69d-ef9755e8fcc6.png)
 - Unzip it and edit LimitedPower.DraftHelperSync.dll.config to include your cookie
 - Cookie can be found by going to https://mtgahelper.com/my/draftRatings, logging in, pressing F12 to open developer tools, editing ANY card, then looking at request headers from the latest request:
-![CookieWhere](https://user-images.githubusercontent.com/5879928/136125536-b5d74857-082a-4375-b9ed-0b5119316081.png)
+![Censored](https://user-images.githubusercontent.com/5879928/136126600-fdbcc687-75f7-402a-b0ae-a42025f357a9.png)
 - By editing the set property it's possible to select for which set to sync data
 - By editing the pastdays property the program will go this many days back to check for 17lands data
 
