@@ -59,8 +59,6 @@ namespace LimitedPower.DraftHelperSync
                     continue;
                 }
 
-                if (premierRating.Name != "Plummet") continue;
-
                 var request = new RestRequest(Method.PUT);
                 var premierNote = $"WR: {premierRating.EverDrawnWinRate?.ToStringValue(0)}% | IWD: {premierRating.DrawnImprovementWinRate?.ToStringValue(2)}pp";
 
