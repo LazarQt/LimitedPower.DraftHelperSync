@@ -3,7 +3,7 @@
 
 namespace LimitedPower.DraftHelperSync
 {
-    public class SeventeenLandsEvaluation
+    public class SeventeenLandsCard
     {
         [JsonPropertyName("seen_count")]
         public int SeenCount { get; set; }
