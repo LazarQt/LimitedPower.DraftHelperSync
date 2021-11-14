@@ -11,6 +11,10 @@
             public const string DraftType = "drafttype";
             public const string Set = "set";
             public const string Cookie = "cookie";
+            public const string RatingType = "ratingtype";
+            public const string AvgPick = "AvgPick";
+            public const string AbsoluteWin = "AbsoluteWin";
+            public const string RelativeWin = "RelativeWin";
         }
 
         public static class MtgaHelper
