@@ -1,5 +1,22 @@
 # LimitedPower.DraftHelperSync
 
+## NEW Feature as of 14th of Nov 2021(!)
+
+If I don't put it up here nobody will read it so that's why this is the first chapter.
+There's a configuration file called "LimitedPower.DraftHelperSync.dll.config"
+You can open this file with any editor to modify a few important settings:
+
+- timespantype: 
+  - PastDays: Ratings will be downloaded from this very day to a number of days in the past
+  - StartDate: Ratings will be downloaded from a particular day onwards
+- timespanvalue:
+  - For "PastDays", you will have to enter the number of days, or a specific date for "StartDate" (Format: "2022-01-30" - year-month-day)
+- drafttype: PremierDraft, TradDraft, Sealed (self explanatory)
+- ratingtype:
+  - AvgPick: Pick order determined by AvgPick data set from 17lands
+  - AbsoluteWin: Pick order determined by absolute WinRate percentage
+  - RelativeWin: Pick order determined by WinRate percentage by taking into account only colors from the rated card
+
 ## What does it do?
 
 It takes a bunch of data from 17lands.com and uploads it to your personal MTGAHelper account.
