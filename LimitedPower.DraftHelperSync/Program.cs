@@ -2,11 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 using LimitedPower.DraftHelperSync.Extensions;
 using System.Configuration;
 using System.IO;
-using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace LimitedPower.DraftHelperSync
@@ -173,10 +171,16 @@ namespace LimitedPower.DraftHelperSync
             //    File.AppendAllText(@"C:\dev\out\commons.html", $"<img src=\"vow/{c.Name}.jpg\">");
             //}
 
+            var mostPlayed = cardRatings.Max(x => x.GameCount);
+            var leastGamesRequired = mostPlayed * .0225;
+
+            cardRatings = cardRatings.Where(c => c.GameCount >= leastGamesRequired).OrderByWinRate();
+
             foreach (var card in cardRatings)
             {
+                if (!card.Name.Contains("Evolving")) continue;
                 var ratingType = ConfigurationManager.AppSettings[Const.Settings.RatingType];
-                var relatedRatings = new List<MyCard>();
+                List<MyCard> relatedRatings;
                 double? max;
                 double? min;
                 switch (ratingType)
@@ -199,7 +203,7 @@ namespace LimitedPower.DraftHelperSync
                 }
 
 
-   
+
                 if (!max.HasValue || !min.HasValue) throw new Exception("ratings not complete (sample size low?)");
 
                 var mtgaHelperCard = mtgaHelperCards.FirstOrDefault(m =>
