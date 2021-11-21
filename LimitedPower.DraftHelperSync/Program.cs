@@ -178,7 +178,7 @@ namespace LimitedPower.DraftHelperSync
 
             foreach (var card in cardRatings)
             {
-                if (!card.Name.Contains("Evolving")) continue;
+                //if (!card.Name.Contains("Evolving")) continue;
                 var ratingType = ConfigurationManager.AppSettings[Const.Settings.RatingType];
                 List<MyCard> relatedRatings;
                 double? max;
