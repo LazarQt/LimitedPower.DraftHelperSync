@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using RestSharp;
 
 namespace LimitedPower.DraftHelperSync.Extensions
 {
@@ -8,9 +7,6 @@ namespace LimitedPower.DraftHelperSync.Extensions
     {
         public static List<MyCard> Commons(this IEnumerable<MyCard> list) =>
             list.Where(c => c.Rarity == Const.Card.Common).ToList();
-
-        public static List<MyCard> OrderByLocal(this IEnumerable<MyCard> list) =>
-            list.OrderByDescending(c => c.Ratings.Average(r => r.Rating)).ToList();
 
         public static List<MyCard> OrderByWinRate(this IEnumerable<MyCard> list) =>
             list.OrderByDescending(c => c.EverDrawnWinRate).ToList();

@@ -6,13 +6,13 @@
 
         public static class Settings
         {
-            public const string TimespanType = "timespantype";
-            public const string TimespanValue = "timespanvalue";
-            public const string DraftType = "drafttype";
-            public const string Set = "set";
-            public const string Cookie = "cookie";
-            public const string RatingType = "ratingtype";
-            public const string AvgPick = "AvgPick";
+            public const string Source = "Source";
+            public const string TimespanType = "TimeSpanType";
+            public const string TimespanValue = "TimeSpanValue";
+            public const string DraftType = "DraftType";
+            public const string Set = "Set";
+            public const string Cookie = "Cookie";
+            public const string RatingType = "RatingType";
             public const string AbsoluteWin = "AbsoluteWin";
             public const string RelativeWin = "RelativeWin";
         }
@@ -29,5 +29,10 @@
         {
             public const string Common = "common";
         }
+
+        public static class App
+        {
+            public const string ContentCreatorOpinion = "ContentCreatorOpinion";
+        } 
     }
 }

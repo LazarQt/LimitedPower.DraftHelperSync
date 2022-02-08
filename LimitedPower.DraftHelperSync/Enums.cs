@@ -20,6 +20,7 @@ namespace LimitedPower.DraftHelperSync
     public enum ReviewContributor
     {
         // ReSharper disable InconsistentNaming
+        // ReSharper disable IdentifierTypo
         DraftaholicsAnonymous,
         DraftSim,
         Lolaman,
@@ -28,6 +29,7 @@ namespace LimitedPower.DraftHelperSync
         Deathsie,
         SeventeenLands,
         // ReSharper restore InconsistentNaming
+        // ReSharper restore IdentifierTypo
     }
 
     public class LimitedPowerRating

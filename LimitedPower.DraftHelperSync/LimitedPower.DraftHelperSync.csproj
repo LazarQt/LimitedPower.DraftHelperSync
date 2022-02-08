@@ -10,7 +10,13 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="106.12.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LimitedPower.Tool">
+      <HintPath>..\..\LimitedPower\LimitedPower.Tool\bin\Debug\netcoreapp3.1\LimitedPower.Tool.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
