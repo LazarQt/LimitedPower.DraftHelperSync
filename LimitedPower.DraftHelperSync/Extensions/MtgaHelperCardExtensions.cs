@@ -6,13 +6,20 @@ namespace LimitedPower.DraftHelperSync.Extensions
 {
     public static class MtgaHelperCardExtensions
     {
-        public static MtgaHelperEvaluation GetCard(this List<MtgaHelperEvaluation> mtgaHelperCards, MyCard card, string set)
+        public static MtgaHelperEvaluation GetCard(this List<MtgaHelperEvaluation> mtgaHelperCards, string cardName, string set)
         {
             var mtgaHelperCard = mtgaHelperCards.FirstOrDefault(m =>
-                m.Card.Name == card.Name && m.Card.Set.ToUpper() == set.ToUpper());
+                m.Card.Name == cardName && m.Card.Set.ToUpper() == set.ToUpper());
             if (mtgaHelperCard == null)
             {
-                throw new Exception($"can not find {card.Name}");
+                var n = cardName.Substring(0, cardName.IndexOf("//") - 1);
+                mtgaHelperCard = mtgaHelperCards.FirstOrDefault(m =>
+                    m.Card.Name == n && m.Card.Set.ToUpper() == set.ToUpper());
+                if (n == null)
+                {
+                    throw new Exception($"can not find {cardName}");
+                }
+                
             }
 
             return mtgaHelperCard;

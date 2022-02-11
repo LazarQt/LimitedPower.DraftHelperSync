@@ -14,13 +14,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="LimitedPower.Tool">
-      <HintPath>..\..\LimitedPower\LimitedPower.Tool\bin\Debug\netcoreapp3.1\LimitedPower.Tool.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\LimitedPower\LimitedPower.Tool\LimitedPower.Tool.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="customDraftRatingsForDisplay.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="lpconfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

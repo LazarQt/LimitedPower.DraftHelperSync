@@ -41,24 +41,46 @@ namespace LimitedPower.DraftHelperSync
             {
                 var tool = new LpTool();
                 // ReSharper disable StringLiteralTypo
-                tool.Run("loadcards neo");
-                tool.Run("loadratings neo");
+                tool.Run($"loadcards {set.ToLower()}");
+                tool.Run($"loadratings {set.ToLower()}");
                 // ReSharper restore StringLiteralTypo
 
                 var cardRatings = JsonConvert.DeserializeObject<List<MyCard>>(File.ReadAllText(@$"{set}.json"));
                 if (cardRatings == null) throw new Exception("no ratings found");
 
-                var r = cardRatings.Select(a => a.Ratings.Average(u => u.Rating)).ToList();
-                if (r == null) throw new Exception("Cant load ratings");
+                var cardRatings2 = JsonConvert.DeserializeObject<List<Core.Card>>(File.ReadAllText(@$"{set}.json"));
 
-                foreach (var card in cardRatings)
+                var condensedRatings = cardRatings2.Select(a =>
                 {
+                    a.CondensedRating = a.Ratings.Average(u => u.Rating);
+                    return a;
+                }).ToList();
+                if (condensedRatings == null) throw new Exception("Cant load ratings");
+
+                //File.WriteAllText("commons.html",string.Empty);
+                foreach (var x in condensedRatings.OrderByDescending(a => a.CondensedRating))
+                {
+                    var name = x.Name;
+                    if (name.Contains("//")) name = name.Substring(0, name.IndexOf("//")-1);
+                    //File.AppendAllText(@"commons.html", $"<img src=\"neo/{name}.jpg\"> {Math.Round(x.CondensedRating,2)}");
+                }
+
+                foreach (var card in condensedRatings)
+                {
+                    
+                    //var bc  = condensedRatings.PrintBestCommons();
+
                     var request = new RestRequest(Method.PUT);
 
-                    var mtgaHelperCard = mtgaHelperCards.GetCard(card, set);
+                    var mtgaHelperCard = mtgaHelperCards.GetCard(card.Name, set);
 
-                    var pickPosition = card.Ratings.Average(c => c.Rating).TransformRating(r.Min(), r.Max());
-
+                    var pickPosition = card.CondensedRating.TransformRating(
+                        condensedRatings.Max(a => a.CondensedRating), condensedRatings.Min(a => a.CondensedRating));
+                    if (mtgaHelperCard == null)
+                    {
+                        Console.WriteLine("NOT FOUND: " + card.Name);
+                        continue;
+                    }
                     request.Generate(mtgaHelperCard.RequestBody(string.Empty, pickPosition), cookie);
                     try
                     {
@@ -106,23 +128,12 @@ namespace LimitedPower.DraftHelperSync
                 // get 17lands stuff
                 var cardRatings = GetSeventeenLandsEvaluations(date, set, draftType);
 
+
                 // cards that are played less than 1% of the time are ignored
                 var minPlay = cardRatings.Max(c => c.GameCount) * .01;
 
                 // evaluate best commons
-                var bestCommons = new List<MyCard>();
-                foreach (var color in Const.Colors)
-                {
-                    var commons = cardRatings.Commons().ExactColor(color);
-                    bestCommons.AddRange(commons.OrderByWinRate().Take(5)
-                        .Union(commons.OrderByImprovementRate().Take(5)));
-                }
-
-
-                //foreach (var c in bestCommons)
-                //{
-                //    File.AppendAllText(@"C:\dev\out\commons.html", $"<img src=\"vow/{c.Name}.jpg\">");
-                //}
+                var bestCommons = cardRatings.PrintBestCommons();
 
                 var mostPlayed = cardRatings.Max(x => x.GameCount);
                 var leastGamesRequired = mostPlayed * .0225;
@@ -159,7 +170,7 @@ namespace LimitedPower.DraftHelperSync
 
                     if (!max.HasValue || !min.HasValue) throw new Exception("ratings not complete (sample size low?)");
 
-                    var mtgaHelperCard = mtgaHelperCards.GetCard(card, set);
+                    var mtgaHelperCard = mtgaHelperCards.GetCard(card.Name, set);
 
                     var request = new RestRequest(Method.PUT);
                     var note =
