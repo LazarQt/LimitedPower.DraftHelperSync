@@ -5,6 +5,13 @@
     },
     "ParserConfigurations": [
       {
+        "GeneratorName": "MtgdsGenerator",
+        "CardNameSubstitutions": {
+        },
+        "Args": [
+        ]
+      },
+      {
         "GeneratorName": "DraftaholicsAnonymousGenerator",
         "CardNameSubstitutions": {
         },
@@ -28,6 +35,52 @@
           "https://docs.google.com/spreadsheets/d/e/2PACX-1vRH7tKaNk3lFzoHZUlGmkLbASrZfQqNhD5KlfNIWiSFLhwuw22E-KKqN8LskRxIqXPkV7lm_1f1gTca/pubhtml#"
         ]
       },
+      {
+        "GeneratorName": "DeathsieGenerator",
+        "CardNameSubstitutions": {
+        },
+        "Args": [
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vQYHrBvWLZLWtkLwdFmLwA7rDWwtpwK-i641rC5PaDP6hXNt7ECsw3HTH5S0VVwxE2SQ_kD7_bNA1Kk/pubhtml#"
+        ]
+      }
+    ]
+  },
+  {
+    "Set": "snc",
+    "ScryfallApiArgs": {
+    },
+    "ParserConfigurations": [
+      //{
+      //  "GeneratorName": "MtgdsGenerator",
+      //  "CardNameSubstitutions": {
+      //  },
+      //  "Args": [
+      //  ]
+      //},
+      {
+        "GeneratorName": "DraftaholicsAnonymousGenerator",
+        "CardNameSubstitutions": {
+        },
+        "Args": [
+        ]
+      },
+      {
+        "GeneratorName": "DraftSimGenerator",
+        "CardNameSubstitutions": {
+        },
+        "Args": [
+          "SNC/SNC,SNC/SNC_common,SNC/SNC_uncommon,SNC/SNC_rare,SNC/SNC_mythic"
+        ]
+      },
+      //{
+      //  "GeneratorName": "InfiniteMythicEditionGenerator",
+      //  "CardNameSubstitutions": {
+
+      //  },
+      //  "Args": [
+      //    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRH7tKaNk3lFzoHZUlGmkLbASrZfQqNhD5KlfNIWiSFLhwuw22E-KKqN8LskRxIqXPkV7lm_1f1gTca/pubhtml#"
+      //  ]
+      //},
       {
         "GeneratorName": "DeathsieGenerator",
         "CardNameSubstitutions": {

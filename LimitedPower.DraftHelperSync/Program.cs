@@ -50,6 +50,8 @@ namespace LimitedPower.DraftHelperSync
 
                 var cardRatings2 = JsonConvert.DeserializeObject<List<Core.Card>>(File.ReadAllText(@$"{set}.json"));
 
+                if (cardRatings2 == null) throw new Exception("no ratings found again");
+
                 var condensedRatings = cardRatings2.Select(a =>
                 {
                     a.CondensedRating = a.Ratings.Average(u => u.Rating);
@@ -58,12 +60,14 @@ namespace LimitedPower.DraftHelperSync
                 if (condensedRatings == null) throw new Exception("Cant load ratings");
 
                 //File.WriteAllText("commons.html",string.Empty);
-                foreach (var x in condensedRatings.OrderByDescending(a => a.CondensedRating))
-                {
-                    var name = x.Name;
-                    if (name.Contains("//")) name = name.Substring(0, name.IndexOf("//")-1);
-                    //File.AppendAllText(@"commons.html", $"<img src=\"neo/{name}.jpg\"> {Math.Round(x.CondensedRating,2)}");
-                }
+                //foreach (var x in condensedRatings.OrderByDescending(a => a.CondensedRating))
+                //{
+                //    var name = x.Name;
+                //    if (name.Contains("//")) name = name.Substring(0, name.IndexOf("//")-1);
+                //    File.AppendAllText(@"commons.html", $"<img src=\"neo/{name}.jpg\"> {Math.Round(x.CondensedRating,2)}");
+                //}
+                condensedRatings.PrintBestCommons();
+                condensedRatings.PrintBest();
 
                 foreach (var card in condensedRatings)
                 {
@@ -135,10 +139,9 @@ namespace LimitedPower.DraftHelperSync
                 // evaluate best commons
                 var bestCommons = cardRatings.PrintBestCommons();
 
-                var mostPlayed = cardRatings.Max(x => x.GameCount);
-                var leastGamesRequired = mostPlayed * .0225;
-
-                cardRatings = cardRatings.Where(c => c.GameCount >= leastGamesRequired).OrderByWinRate();
+                cardRatings = cardRatings.OrderByWinRate();
+                cardRatings.PrintBestCommons();
+                cardRatings.PrintBest();
 
                 foreach (var card in cardRatings)
                 {
