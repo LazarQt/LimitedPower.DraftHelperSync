@@ -30,7 +30,6 @@ You can open this file with any editor to modify a few important settings:
 
 - Source:
   - 17lands: Data loaded from 17Lands website (https://www.17lands.com/)
-  - ContentCreatorOpinion: Data loaded from several content creators
 - TimeSpanType: 
   - PastDays: Ratings will be downloaded from this very day to a number of days in the past
   - StartDate: Ratings will be downloaded from a particular day onwards
