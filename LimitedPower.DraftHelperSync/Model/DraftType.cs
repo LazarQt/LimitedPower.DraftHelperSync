@@ -5,7 +5,8 @@
         // ReSharper disable once UnusedMember.Global
         PremierDraft,
         TradDraft,
-        Sealed
+        Sealed,
+        QuickDraft
         // ReSharper restore UnusedMember.Global
     }
 }
