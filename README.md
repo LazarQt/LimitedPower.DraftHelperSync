@@ -36,7 +36,7 @@ You can open this file with any editor to modify a few important settings:
 - TimeSpanValue:
   - For "PastDays", you will have to enter the number of days
   - For "StartDate" enter a specific date (Format: "2022-01-30" - year-month-day)
-- DraftType: PremierDraft, TradDraft, Sealed (self explanatory)
+- DraftType: PremierDraft, TradDraft, Sealed, QuickDraft (self explanatory)
 - RatingType (Only valid with Source=17lands):
   - AvgPick: Pick order determined by AvgPick data set from 17Lands
   - AbsoluteWin: Pick order determined by absolute WinRate percentage
