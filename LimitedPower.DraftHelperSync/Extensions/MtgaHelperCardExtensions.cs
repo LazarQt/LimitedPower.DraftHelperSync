@@ -10,6 +10,14 @@ namespace LimitedPower.DraftHelperSync.Extensions
         {
             var mtgaHelperCard = mtgaHelperCards.FirstOrDefault(m =>
                 m.Card.Name == cardName && m.Card.Set.ToUpper() == set.ToUpper());
+
+            // alchemy cards fix
+            if(mtgaHelperCard == null)
+            {
+                mtgaHelperCard = mtgaHelperCards.FirstOrDefault(m =>
+                m.Card.Name == cardName.Replace("A-","") && m.Card.Set.ToUpper() == set.ToUpper());
+            }
+
             if (mtgaHelperCard == null)
             {
                 var n = cardName.Substring(0, cardName.IndexOf("//") - 1);

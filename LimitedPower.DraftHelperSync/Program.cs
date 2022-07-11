@@ -96,10 +96,14 @@ namespace LimitedPower.DraftHelperSync
                 List<SeventeenLandsCard> relatedRatings;
                 double? max;
                 double? min;
+
+                // eliminate cards with win rate = 100%, this means no data but shows up as 100% winrate
+                cardRatings = cardRatings.Where(c => c.EverDrawnWinRate < 1).ToList();
+
                 switch (ratingType)
                 {
                     case Const.Settings.AbsoluteWin:
-                        relatedRatings = cardRatings.Where(g => g.EverDrawnWinRate >= 0.5).ToList();
+                        relatedRatings = cardRatings.ToList();
                         max = relatedRatings.Max(g => g.EverDrawnWinRate);
                         min = relatedRatings.Min(g => g.EverDrawnWinRate);
                         break;
@@ -136,7 +140,7 @@ namespace LimitedPower.DraftHelperSync
                 };
 
                 // low sample size
-                if (card.GameCount <= minPlay) pickPosition = 0;
+                if (card.EverDrawnWinRate == 1) pickPosition = 0;
                 var pickPos = 0;
                 if (pickPosition != null) pickPos = (int)pickPosition;
 
