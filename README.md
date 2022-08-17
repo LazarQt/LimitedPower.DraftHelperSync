@@ -1,6 +1,6 @@
-# LimitedPower.DraftHelperSync
+# DraftHelperSync [1️7️🔄]
 
-Sync tool for MTGAHelper (https://mtgahelper.com/)
+Sync tool for [MTGAHelper](https://mtgahelper.com).
 
 ## What does it do?
 
@@ -12,14 +12,15 @@ Currently it shows overall Win% and "Improvement when drawn"-Points.
 
 ## How do I do it?
 
-- Download latest release https://github.com/LazarQt/LimitedPower.DraftHelperSync/releases
+- Download latest [release](https://github.com/LazarQt/LimitedPower.DraftHelperSync/releases)
 - Unzip it and edit LimitedPower.DraftHelperSync.dll.config to include your cookie
 - Cookie can be found by going to https://mtgahelper.com/my/draftRatings, logging in, pressing F12 to open developer tools, editing ANY card, then looking at request headers from the latest request
 
 ![cookie](https://user-images.githubusercontent.com/5879928/184459888-5836866b-d6b6-4d09-a859-4e59a444afd3.gif)
 
-There's a configuration file called "LimitedPower.DraftHelperSync.dll.config"
-You can open this file with any editor to modify a few important settings:
+## Configuration Settings
+
+In addition to the cookie there are other settings required to make the synchronization process work.
 
 - Source:
   - 17lands: Data loaded from 17Lands website (https://www.17lands.com/)
@@ -30,7 +31,7 @@ You can open this file with any editor to modify a few important settings:
   - For "PastDays", you will have to enter the number of days
   - For "StartDate" enter a specific date (Format: "2022-01-30" - year-month-day)
 - DraftType: PremierDraft, TradDraft, Sealed, QuickDraft (self explanatory)
-- RatingType (Only valid with Source=17lands):
+- RatingType:
   - AvgPick: Pick order determined by AvgPick data set from 17Lands
   - AbsoluteWin: Pick order determined by absolute WinRate percentage
   - RelativeWin: Pick order determined by WinRate percentage by taking into account only colors from the rated card
