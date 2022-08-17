@@ -1,4 +1,4 @@
-# DraftHelperSync [1️7️🔄]
+# DraftHelperSync 1️7️🔄
 
 Sync tool for [MTGAHelper](https://mtgahelper.com).
 
@@ -38,7 +38,7 @@ In addition to the cookie there are other settings required to make the synchron
 
 Now just execute LimitedPower.DraftHelperSync.exe and watch the magic (pun intended) happen:
 
-![Done](https://user-images.githubusercontent.com/5879928/136125976-3234c2f0-cb82-4786-ad9e-dca9cab1f842.png)
+![image](https://user-images.githubusercontent.com/5879928/185113065-1f9926c0-a3aa-4b79-aa6c-02a9968931a1.png)
 
 If there are any problems or if you have suggestions feel free to open an issue.
 
