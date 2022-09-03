@@ -49,6 +49,13 @@ namespace LimitedPower.DraftHelperSync
                     File.ReadAllText(Const.MtgaHelper.CardsJsonFile));
             if (mtgaHelperCards == null) throw new Exception("could not read local MTGAHelper data");
 
+            if (mtgaHelperCards.All(c => c.Card.Set.ToLower() != set.ToLower()))
+            {
+                Console.WriteLine($"MTGAHelper data for set {set} not available yet.");
+                Console.ReadKey();
+                return;
+            }
+
             // parse timespan type
             var timespanType = ConfigurationManager.AppSettings[Const.Settings.TimespanType];
             var date = DateTime.Now;
@@ -81,9 +88,6 @@ namespace LimitedPower.DraftHelperSync
 
             // get 17lands data
             var cardRatings = GetSeventeenLandsEvaluations(date, set, draftType);
-
-            // cards that are played less than 1% of the time are ignored
-            var minPlay = cardRatings.Max(c => c.GameCount) * .01;
 
             // evaluate best commons
             var bestCommons = cardRatings.GetBestCommons();
