@@ -23,5 +23,7 @@ namespace LimitedPower.DraftHelperSync.Extensions
 
             return bestCommons;
         }
+
+        public static string CompareTerm(this Card card) => card.Name.ToUpper();
     }
 }
